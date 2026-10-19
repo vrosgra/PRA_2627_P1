@@ -8,3 +8,7 @@ clean:
 bin/testNode: testNode.cpp Node.h
 	mkdir -p bin
 	g++ -o testNode testNode.cpp
+
+testListLinked: testListLinked.cpp ListLinked.h Node.h List.h
+	mkdir -p bin
+	g++ -o testListLinked testListLinked.cpp
