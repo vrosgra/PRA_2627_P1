@@ -1,26 +1,33 @@
 bin/testListArray: testListArray.cpp ListArray.h List.h
 	mkdir -p bin
-	g++ -o testListArray testListArray.cpp
-
-clean:
-	rm -r *.o *.gch *.pch bin
+	g++ -o bin/testListArray testListArray.cpp
 
 bin/testNode: testNode.cpp Node.h
 	mkdir -p bin
-	g++ -o testNode testNode.cpp
+	g++ -o bin/testNode testNode.cpp
 
-testListLinked: testListLinked.cpp ListLinked.h Node.h List.h
+bin/testListLinked: testListLinked.cpp ListLinked.h Node.h List.h
 	mkdir -p bin
-	g++ -o testListLinked testListLinked.cpp
+	g++ -o bin/testListLinked testListLinked.cpp
 
-point2D.o: point2D.cpp point2D.h
-	g++ -c point2D.cpp
+Point2D.o: Point2D.cpp Point2D.h
+	g++ -c Point2D.cpp
 
-testPoint2D: testPoint2D.cpp point2D.o
+bin/testPoint2D: testPoint2D.cpp Point2D.o
 	g++ -c testPoint2D.cpp
-	g++ -o testPoint2D testPoint2D.o point2D.o
+	mkdir -p bin
+	g++ -o bin/testPoint2D testPoint2D.o Point2D.o
 
-Shape.o: Shape.cpp Shape.h
+Shape.o: Shape.cpp Shape.h Point2D.h
 	g++ -c Shape.cpp
 
+Circle.o: Circle.cpp Circle.h Shape.h Point2D.h
+	g++ -c Circle.cpp
 
+bin/testCircle: testCircle.cpp Circle.o Shape.o Point2D.o
+	g++ -c testCircle.cpp
+	mkdir -p bin
+	g++ -o bin/testCircle testCircle.o Circle.o Shape.o Point2D.o
+
+clean:
+	rm -rf *.o *.gch *.pch bin

@@ -15,4 +15,7 @@ class List{
 		virtual ~List() = 0;	
 };
 
+template <typename T>
+List<T>::~List(){}
+
 #endif

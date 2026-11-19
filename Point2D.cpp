@@ -1,6 +1,6 @@
 #include <ostream>
 #include <cmath>
-#include "point2D.h"
+#include "Point2D.h"
 
 Point2D::Point2D(double x, double y){
 	this->x = x;
