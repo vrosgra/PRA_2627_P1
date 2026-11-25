@@ -4,11 +4,9 @@
 
 static const double PI = 3.141592;
 
-// Constructor por defecto: color por defecto (lo fija Shape), centro (0,0), radio 1
 Circle::Circle() : Shape(), center(0, 0), radius(1) {
 }
 
-// Constructor con parámetros: no se permiten radios negativos
 Circle::Circle(std::string color, Point2D center, double radius) : Shape(color), center(center) {
     if (radius < 0) {
         throw std::invalid_argument("El radio no puede ser negativo");
@@ -49,7 +47,7 @@ void Circle::translate(double incX, double incY) {
 }
 
 void Circle::print() {
-    std::cout << *this;
+    std::cout << *this << std::endl;
 }
 
 std::ostream& operator<<(std::ostream &out, const Circle &c) {
